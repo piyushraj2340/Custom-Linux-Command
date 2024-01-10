@@ -1,0 +1,132 @@
+#!/bin/bash
+
+case "$1" in
+    "cpu")
+        case "$2" in
+            "getinfo")
+                # Part1: Level Easy - CPU information
+                lscpu
+                ;;
+            *)
+                echo "Invalid subcommand for 'cpu'"
+                exit 1
+                ;;
+        esac
+        ;;
+    
+    "memory")
+        case "$2" in
+            "getinfo")
+                # Part1: Level Easy - Memory information
+                free
+                ;;
+            *)
+                echo "Invalid subcommand for 'memory'"
+                exit 1
+                ;;
+        esac
+        ;;
+    
+    "user")
+        case "$2" in
+            "create")
+                # Part2: Level Intermediate - Create a new user
+                if [ -z "$3" ]; then
+                    echo "Please provide a username"
+                    exit 1
+                fi
+                sudo useradd -m "$3"
+                ;;
+            
+            "list")
+                # Part2: Level Intermediate - List users
+                if [ "$3" == "--sudo-only" ]; then
+                    grep -E 'sudo|admin' /etc/group | cut -d: -f4
+                else
+                    cut -d: -f1 /etc/passwd
+                fi
+                ;;
+            
+            *)
+                echo "Invalid subcommand for 'user'"
+                exit 1
+                ;;
+        esac
+        ;;
+
+    "file")
+        case "$2" in
+            "getinfo")
+                # Part3: Advanced Level - Get file information
+                filename="$3"
+                size=false
+                permissions=false
+                owner=false
+                last_modified=false
+
+                while [ "$#" -gt 3 ]; do
+                    case "$4" in
+                        "--size" | "-s")
+                            size=true
+                            shift
+                            ;;
+                        "--permissions" | "-p")
+                            permissions=true
+                            shift
+                            ;;
+                        "--owner" | "-o")
+                            owner=true
+                            shift
+                            ;;
+                        "--last-modified" | "-m")
+                            last_modified=true
+                            shift
+                            ;;
+                        *)
+                            echo "Invalid option: $4"
+                            exit 1
+                            ;;
+                    esac
+                done
+
+                file_info=$(stat "$filename")
+
+                if [ "$size" = true ]; then
+                    echo "$file_info" | grep "Size:" | awk '{print $2}'
+                fi
+
+                if [ "$permissions" = true ]; then
+                    echo "$file_info" | grep "Access:" | awk '{print $2}'
+                fi
+
+                if [ "$owner" = true ]; then
+                    echo "$file_info" | grep "Owner:" | awk '{print $2}'
+                fi
+
+                if [ "$last_modified" = true ]; then
+                    echo "$file_info" | grep "Modify:" | awk '{print $2, $3, $4, $5}'
+                fi
+                ;;
+
+            *)
+                echo "Invalid subcommand for 'file'"
+                exit 1
+                ;;
+        esac
+        ;;
+    
+    "--help" | "-h")
+        # Display help
+        echo "Help: Add help information here"
+        ;;
+    
+    "--version")
+        # Display version
+        echo "internsctl v0.1.0"
+        ;;
+
+    *)
+        echo "Invalid command. Use '--help' for assistance."
+        exit 1
+        ;;
+esac
