@@ -44,4 +44,6 @@ Ensure that you have the necessary permissions to execute the script. You can cl
 **get file info with options**
 ```internsctl file getinfo [options] <file-name>```
 
-##### Example
+##### working
+
+
