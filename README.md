@@ -48,10 +48,10 @@ Ensure that you have the necessary permissions to execute the script. You can cl
 1. Section A
 ![Section A Screenshot](https://github.com/piyushraj2340/Custom-Linux-Command/blob/master/working/section_a.jpg)
 
-1. Section B
+1. Section B Part 1
 ![Section A Part 1 Screenshot](https://github.com/piyushraj2340/Custom-Linux-Command/blob/master/working/section_b_part_1.jpg)
 
-1. Section B
+1. Section B Part 2
 ![Section A Screenshot](https://github.com/piyushraj2340/Custom-Linux-Command/blob/master/working/section_b_part_1.jpg)
 
 
