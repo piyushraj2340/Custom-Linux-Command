@@ -45,5 +45,13 @@ Ensure that you have the necessary permissions to execute the script. You can cl
 ```internsctl file getinfo [options] <file-name>```
 
 ##### working
+1. Section A
+![Section A Screenshot](https://github.com/piyushraj2340/Custom-Linux-Command/blob/master/working/section_a.jpg)
+
+1. Section B
+![Section A Part 1 Screenshot](https://github.com/piyushraj2340/Custom-Linux-Command/blob/master/working/section_b_part_1.jpg)
+
+1. Section B
+![Section A Screenshot](https://github.com/piyushraj2340/Custom-Linux-Command/blob/master/working/section_b_part_1.jpg)
 
 
